@@ -11,6 +11,7 @@ namespace zed_0xff.GeneCollectorQOL
         {
             Harmony harmony = new Harmony("zed_0xff.GeneCollectorQOL");
             harmony.PatchAll();
+            Patch_WVC_GeneSpawner.HandlePatch(harmony);
         }
     }
 }

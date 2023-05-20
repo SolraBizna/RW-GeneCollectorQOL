@@ -11,17 +11,14 @@ using System.Reflection.Emit;
 // show messages for gene spawner genes
 namespace zed_0xff.GeneCollectorQOL
 {
-    [HarmonyPatch]
     public static class Patch_WVC_GeneSpawner
     {
-        /*
         public static void HandlePatch(Harmony har)
         {
             if (LoadedModManager.RunningModsListForReading.Any(m => m.PackageId == "wvc.sergkart.races.biotech")) {
                 har.Patch(TargetMethod(), new HarmonyMethod(typeof(Patch_WVC_GeneSpawner).GetMethod("Transpiler", BindingFlags.Static | BindingFlags.Public)));
             }
         }
-        */
 
         public static MethodBase TargetMethod()
         {
