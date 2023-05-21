@@ -23,4 +23,8 @@
           <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
       </li>
   </modDependencies>
+  <loadAfter>
+    <li>rimworld.randomcoughdrop.geneassistant</li>
+    <li>wvc.sergkart.races.biotech</li>
+  </loadAfter>
 </ModMetaData>
