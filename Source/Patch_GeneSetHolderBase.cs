@@ -13,6 +13,8 @@ namespace zed_0xff.GeneCollectorQOL {
     static class Patch_GetInspectString
     {
         static void Postfix(ref GeneSetHolderBase __instance, ref string __result){
+            if( !ModConfig.Settings.patchGene_colorize) return;
+
             GeneSet gs = __instance.GeneSet;
             if (gs == null)
                 return;

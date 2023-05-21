@@ -16,14 +16,15 @@ public static class Patch_RandomsGeneAssistant
     const string PackageId = "rimworld.randomcoughdrop.geneassistant";
 
     public static void HandlePatch(Harmony harmony) {
-        if (LoadedModManager.RunningModsListForReading.Any(m => m.PackageId == PackageId)) {
-            harmony.Patch(TargetMethod(),
-                    transpiler: new HarmonyMethod(
-                        MethodBase.GetCurrentMethod().DeclaringType.GetMethod("Transpiler", BindingFlags.Static | BindingFlags.Public),
-                        after: new[] { PackageId }
-                        )
-                    );
-        }
+        if( !ModConfig.Settings.patchRGA ) return;
+        if( !LoadedModManager.RunningModsListForReading.Any(m => m.PackageId == PackageId)) return;
+
+        harmony.Patch(TargetMethod(),
+                transpiler: new HarmonyMethod(
+                    MethodBase.GetCurrentMethod().DeclaringType.GetMethod("Transpiler", BindingFlags.Static | BindingFlags.Public),
+                    after: new[] { PackageId }
+                    )
+                );
     }
 
     public static MethodBase TargetMethod()

@@ -49,13 +49,13 @@ static class Patch_BiostatsTable {
 
         // "More Gene Information" mod sets ignoreLimits to false thus disabling the max complexity vanilla indicator
         // return it back
-        if( ignoreLimits && drawMax && hasModMoreGeneInfo() ){
+        if( ModConfig.Settings.patchGeneAssembler_showCapsules && ignoreLimits && drawMax && hasModMoreGeneInfo() ){
             ignoreLimits = false;
         }
     }
 
     public static void Label(Rect rect, string label){
-        if( gDrawMax ){
+        if( gDrawMax && ModConfig.Settings.patchGeneAssembler_showCapsules ){
             int needed = Convert.ToInt32(label) * Patch_Dialog_CreateXenogerm.n;
             label = needed.ToString();
             int have = CountAvailCapsules();

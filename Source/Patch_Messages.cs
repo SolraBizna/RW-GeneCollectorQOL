@@ -34,12 +34,11 @@ namespace zed_0xff.GeneCollectorQOL {
             if( def != MessageTypeDefOf.PositiveEvent )
                 return true;
 
-            // TODO: checkbox
-            if( text.StartsWith("Unstable mutation gained by") )
+            if( ModConfig.Settings.patchAG && text.StartsWith("Unstable mutation gained by") )
                 return false;
 
-            // TODO: checkbox
-            if( lookTargets != null
+            if( ModConfig.Settings.patchGeneExtractor_colorize
+                    && lookTargets != null
                     && lookTargets.targets.Count == 2
                     && lookTargets.targets[0].Thing is Pawn pawn
                     && lookTargets.targets[1].Thing is Genepack gp

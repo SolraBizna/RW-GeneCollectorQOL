@@ -41,6 +41,7 @@ static class Patch_Building_GeneAssembler {
                 XenotypeIconDef ___iconDef
                 ){
 
+            if( !ModConfig.Settings.patchGeneAssembler_addQueue ) return;
             if( ___genepacksToRecombine.NullOrEmpty() ) return; // XXX or clear state?
             if( !queues.ContainsKey(__instance.thingIDNumber) ) return;
 
@@ -48,6 +49,7 @@ static class Patch_Building_GeneAssembler {
         }
 
         static void Postfix(Building_GeneAssembler __instance){
+            if( !ModConfig.Settings.patchGeneAssembler_addQueue ) return;
             if( !queues.ContainsKey(__instance.thingIDNumber) ) return;
 
             int nQueued = queues[__instance.thingIDNumber];
@@ -68,12 +70,14 @@ static class Patch_Building_GeneAssembler {
     [HarmonyPatch(typeof(Building_GeneAssembler), "Start")]
     class Patch_Start {
         static void Prefix(Building_GeneAssembler __instance){
+            if( !ModConfig.Settings.patchGeneAssembler_addQueue ) return;
             if( states.TryGetValue(__instance.thingIDNumber, out State state) ){
                 state.skipReset = true;
             }
         }
 
         static void Postfix(Building_GeneAssembler __instance){
+            if( !ModConfig.Settings.patchGeneAssembler_addQueue ) return;
             if( states.TryGetValue(__instance.thingIDNumber, out State state) ){
                 state.skipReset = false;
             }
@@ -85,6 +89,7 @@ static class Patch_Building_GeneAssembler {
     [HarmonyPatch(typeof(Building_GeneAssembler), "Reset")]
     class Patch_Reset {
         static void Postfix(Building_GeneAssembler __instance){
+            if( !ModConfig.Settings.patchGeneAssembler_addQueue ) return;
             if( states.TryGetValue(__instance.thingIDNumber, out State state) && state.skipReset ){
                 return;
             }
@@ -99,6 +104,8 @@ static class Patch_Building_GeneAssembler {
     [HarmonyPatch(typeof(Building_GeneAssembler), nameof(Building_GeneAssembler.GetInspectString))]
     class Patch_GetInspectString {
         static void Postfix(Building_GeneAssembler __instance, ref string __result){
+            if( !ModConfig.Settings.patchGeneAssembler_addQueue ) return;
+
             if( queues.TryGetValue(__instance.thingIDNumber, out int nQueued) && nQueued != 0 ){
                 int numTicks = Mathf.RoundToInt(nQueued * GeneTuning.ComplexityToCreationHoursCurve.Evaluate((int)_TotalGCX(__instance)) * 2500f / __instance.GetStatValue(StatDefOf.AssemblySpeedFactor));
                 // TaggedString is for colorizing time left
@@ -110,6 +117,8 @@ static class Patch_Building_GeneAssembler {
     [HarmonyPatch(typeof(Building_GeneAssembler), nameof(Building_GeneAssembler.ExposeData))]
     class Patch_ExposeData {
         static void Postfix(Building_GeneAssembler __instance){
+            if( !ModConfig.Settings.patchGeneAssembler_addQueue ) return;
+
             int tmp = 0;
 
             switch( Scribe.mode ){

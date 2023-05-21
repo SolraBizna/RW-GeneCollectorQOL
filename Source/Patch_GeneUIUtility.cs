@@ -17,7 +17,7 @@ namespace zed_0xff.GeneCollectorQOL {
 
         static void Prefix(GeneDef gene, Rect geneRect, GeneType geneType, Func<string> extraTooltip, bool doBackground, bool clickable, bool overridden)
         {
-            if( !GeneCache.HasSingleGene(gene) ){
+            if( ModConfig.Settings.patchGeneAssembler_colorizeCombinedPart && !GeneCache.HasSingleGene(gene) ){
                 Widgets.DrawBoxSolid(geneRect, yellow);
             }
         }

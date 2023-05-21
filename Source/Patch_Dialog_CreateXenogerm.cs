@@ -27,6 +27,7 @@ static class Patch_Dialog_CreateXenogerm {
     [HarmonyPatch(typeof(Dialog_CreateXenogerm), "StartAssembly")]
     class Patch_StartAssembly {
         static void Postfix(Building_GeneAssembler ___geneAssembler){
+            if( !ModConfig.Settings.patchGeneAssembler_addQueue ) return;
             Patch_Building_GeneAssembler.queues[___geneAssembler.thingIDNumber] = n-1;
             n = 1;
         }
@@ -35,7 +36,7 @@ static class Patch_Dialog_CreateXenogerm {
     [HarmonyPatch(typeof(Dialog_CreateXenogerm), "DoBottomButtons")]
     class Patch_DoBottomButtons {
         static void Postfix(Dialog_CreateXenogerm __instance, List<Genepack> ___selectedGenepacks, Rect rect, int ___arc, Vector2 ___ButSize){
-            // TODO: config
+            if( !ModConfig.Settings.patchGeneAssembler_addQueue ) return;
 
             string text = n + "x";
             var textSize = Text.CalcSize(text);

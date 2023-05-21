@@ -16,7 +16,7 @@ namespace zed_0xff.GeneCollectorQOL {
 
         static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, Xenogerm __instance)
         {
-            bool was = false;
+            bool was = !ModConfig.Settings.patchXenogerm_prisonersGizmo;
             foreach( Gizmo gizmo in __result ){
                 yield return gizmo;
                 if( !was && gizmo is Command_Action ca && (
@@ -71,6 +71,8 @@ namespace zed_0xff.GeneCollectorQOL {
     {
         static bool Prefix(ref Xenogerm __instance, Pawn targetPawn)
         {
+            if( !ModConfig.Settings.patchXenogerm_hideLetter ) return true;
+
             bool show = false;
             if (!targetPawn.InBed() && !targetPawn.Map.listerBuildings.allBuildingsColonist.Any((Building x) => x is Building_Bed && RestUtility.CanUseBedEver(targetPawn, x.def) && ((Building_Bed)x).Medical)){
                 show = true;
