@@ -1,11 +1,12 @@
 # Gene Collector QoL
-[![Gene Collector QoL](About/Preview.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=)
+[![Gene Collector QoL](About/Preview.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=2978672610)
 
-FIXME: blah blah
 
 ## Verified compatible/supported mods
 
-- [FIXME](https://steamcommunity.com/sharedfiles/filedetails/?id=...)
+- [Alpha Genes](https://steamcommunity.com/sharedfiles/filedetails/?id=2891845502)
+- [Random's Gene Assistant](https://steamcommunity.com/sharedfiles/filedetails/?id=2882497271)
+- [WVC - Xenotypes and Genes](https://steamcommunity.com/sharedfiles/filedetails/?id=2886992038)
 
 ## You may also like...
 
