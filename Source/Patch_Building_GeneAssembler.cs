@@ -93,11 +93,14 @@ static class Patch_Building_GeneAssembler {
         }
     }
 
+    private static readonly MethodInfo mTotalGCX = AccessTools.Method(typeof(Building_GeneAssembler), "get_TotalGCX");
+    private static readonly FastInvokeHandler _TotalGCX = MethodInvoker.GetHandler(mTotalGCX);
+
     [HarmonyPatch(typeof(Building_GeneAssembler), nameof(Building_GeneAssembler.GetInspectString))]
     class Patch_GetInspectString {
         static void Postfix(Building_GeneAssembler __instance, ref string __result){
             if( queues.TryGetValue(__instance.thingIDNumber, out int nQueued) && nQueued != 0 ){
-                int numTicks = Mathf.RoundToInt(nQueued * 2500f / __instance.GetStatValue(StatDefOf.AssemblySpeedFactor));
+                int numTicks = Mathf.RoundToInt(nQueued * GeneTuning.ComplexityToCreationHoursCurve.Evaluate((int)_TotalGCX(__instance)) * 2500f / __instance.GetStatValue(StatDefOf.AssemblySpeedFactor));
                 // TaggedString is for colorizing time left
                 __result = new TaggedString(__result + "\n" + "Queued".Translate() + ": " + nQueued + " (" + numTicks.ToStringTicksToPeriod() + ")").Resolve();
             }
