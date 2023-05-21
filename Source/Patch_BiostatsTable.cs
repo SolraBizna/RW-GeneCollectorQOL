@@ -8,6 +8,8 @@ using System;
 using UnityEngine;
 using Verse;
 
+namespace zed_0xff.GeneCollectorQOL;
+
 // draw total available archite capsules count in "Create Xenogerm" dialog
 [HarmonyPatch(typeof(BiostatsTable), nameof(BiostatsTable.Draw))]
 static class Patch_BiostatsTable {
@@ -54,7 +56,8 @@ static class Patch_BiostatsTable {
 
     public static void Label(Rect rect, string label){
         if( gDrawMax ){
-            int needed = Convert.ToInt32(label);
+            int needed = Convert.ToInt32(label) * Patch_Dialog_CreateXenogerm.n;
+            label = needed.ToString();
             int have = CountAvailCapsules();
             if( needed > have ){
                 label = label.Colorize(ColorLibrary.RedReadable);
@@ -73,7 +76,7 @@ static class Patch_BiostatsTable {
             if( 
                     codes[i].opcode == OpCodes.Ldarga_S && Convert.ToInt32(codes[i].operand) == 3 &&
                     codes[i+1].opcode == OpCodes.Call && // System.String System.Int32::ToString()
-                    codes[i+2].opcode == OpCodes.Call && codes[i+2].operand as MethodInfo == origLabel
+                    codes[i+2].Calls(origLabel)
               ){
                 codes[i+2].operand = myLabel;
                 break;
