@@ -1,12 +1,40 @@
 # Gene Collector QoL
 [![Gene Collector QoL](About/Preview.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=2978672610)
 
+## Gene Assembler
 
-## Verified compatible/supported mods
+![](screens/xenogerm_queue.jpg)
 
-- [Alpha Genes](https://steamcommunity.com/sharedfiles/filedetails/?id=2891845502)
-- [Random's Gene Assistant](https://steamcommunity.com/sharedfiles/filedetails/?id=2882497271)
-- [WVC - Xenotypes and Genes](https://steamcommunity.com/sharedfiles/filedetails/?id=2886992038)
+- Xenogerm queue - you now can specify the quantity of xenogerms you want to make
+- Show available archite capsules count
+
+![](screens/gene_highlight.jpg)
+
+- Highlight genes in a combined genepack that we don't have as separate genes
+
+## Xenogerm
+
+![](screens/xenogerm.jpg)
+
+- Colored gene listing in inspect string
+- "Implant into a prisoner" button
+- Suppress normal "Xenogerm implantation ordered" letter
+
+## Gene Extractor
+
+- Colorize "Gene extraction complete" message
+
+## Mod patches
+
+![](screens/genepack_trade.jpg)
+
+- [Random's Gene Assistant](https://steamcommunity.com/sharedfiles/filedetails/?id=2882497271): support coloring of all genepacks
+- [Alpha Genes](https://steamcommunity.com/sharedfiles/filedetails/?id=2891845502): suppress "Unstable mutation gained" message
+- [WVC - Xenotypes and Genes](https://steamcommunity.com/sharedfiles/filedetails/?id=2886992038): notify about spawned genepacks
+
+## Misc
+
+- added "DEV: Add specific gene..." dev.mode gizmo for gene banks
 
 ## You may also like...
 
