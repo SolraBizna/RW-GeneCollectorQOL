@@ -29,7 +29,7 @@ public static class Patch_WVC_GeneSpawner
 
     public static MethodBase TargetMethod()
     {
-        MethodInfo mi = AccessTools.Method(AccessTools.TypeByName("WVC.Gene_Spawner"), "SpawnItems");
+        MethodInfo mi = AccessTools.Method(AccessTools.TypeByName("WVC_XenotypesAndGenes.Gene_Spawner"), "SpawnItems");
         return mi;
     }
 
