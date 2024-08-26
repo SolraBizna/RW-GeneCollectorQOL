@@ -8,7 +8,7 @@ using System.Reflection;
 
 // draw yellow bg on genes in a combined genepack that we don't have as separate genes
 namespace zed_0xff.GeneCollectorQOL {
-    [HarmonyPatch(typeof(GeneUIUtility), "DrawGeneDef_NewTemp")]
+    [HarmonyPatch(typeof(GeneUIUtility), "DrawGeneDef")]
     static class Patch_Color
     {
         public static float sat => 0.5f;

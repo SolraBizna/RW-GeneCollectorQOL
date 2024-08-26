@@ -6,7 +6,7 @@
     <RootNamespace>zed.0xff.GeneCollectorQOL</RootNamespace>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <OutputPath>../Assemblies</OutputPath>
+    <OutputPath>../1.5/Assemblies</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
